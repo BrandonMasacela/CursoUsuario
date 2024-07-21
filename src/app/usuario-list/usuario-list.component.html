@@ -1,0 +1,39 @@
+<h2 class = "mb-5"> Mis Usuarios </h2>
+<div class = "text-end">
+  <div class="btn-group">
+    <button class = "btn btn-primary" routerLink = "/nuevo">
+      Nuevo Usuario
+    </button>
+    <button class="btn btn-warning">
+      Buscar
+    </button>
+  </div>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>NOMBRE</th>
+      <th>EMAIL</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(usuario of usuarios1; track usuario.id){
+      <tr>
+        <td>{{ usuario.id }}</td>
+        <td>{{ usuario.nombre }}</td>
+        <td>{{ usuario.email }}</td>
+        <td class="text-end">
+          <div class="btn-group">
+            <button class="btn btn-primary" [routerLink]="['/mostrarUsuarios',usuario.id, 'editar']">
+              Editar
+            </button>
+            <button class="btn btn-danger" (click)="delete(usuario)">
+              Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
