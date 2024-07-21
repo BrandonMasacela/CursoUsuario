@@ -9,7 +9,7 @@
     </h3>
     <hr />
     <label for="name"><b>Nombre</b></label>
-    <input type="text" formControlName="nombre" placeholder="Introduzca su nombre de pila" class="form-control"
+    <input type="text" formControlName="nombre" placeholder="Introduzca su nombre" class="form-control"
       [ngClass]="{'is-valid': registerForm.get('nombre')?.valid && (registerForm.get('nombre')?.dirty || registerForm.get('nombre')?.touched), 'is-invalid': registerForm.get('nombre')?.invalid && (registerForm.get('nombre')?.dirty || registerForm.get('nombre')?.touched)}" />
 
     <div class="invalid-feedback" *ngIf="registerForm.get('nombre')?.invalid && (registerForm.get('nombre')?.dirty || registerForm.get('nombre')?.touched)">

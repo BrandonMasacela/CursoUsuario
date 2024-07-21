@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import path from 'path';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,25 @@ export const routes: Routes = [
   {
     path: ':id/mostrarUsuario',
     loadComponent: () => import('./usuario-list/usuario-list.component')
+  },
+  {
+    path: 'mostrarCursos',
+    loadComponent: () => import('./curso-list/curso-list.component')
+  },
+  {
+    path: 'nuevoCurso',
+    loadComponent: () => import('./curso-form/curso-form.component')
+  },
+  {
+    path: 'mostrarCursos/:id/editar',
+    loadComponent: () => import('./curso-form/curso-form.component')
+  },
+  {
+    path: ':id/mostrarCursos',
+    loadComponent: () => import('./curso-list/curso-list.component')
+  },
+  {
+    path: 'mostrarInscripciones',
+    loadComponent: () => import('./curso-usuario/curso-usuario.component')
   },
 ];

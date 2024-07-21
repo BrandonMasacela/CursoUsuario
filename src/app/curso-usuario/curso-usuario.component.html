@@ -1,0 +1,44 @@
+<h2 class="mb-5">Detalle Curso</h2>
+<div class="text-end">
+  <div class="btn-group">
+    <button class="btn btn-primary" routerLink="/nuevoCurso">
+      Nuevo Curso
+    </button>
+    <button class="btn btn-warning">
+      Buscar
+    </button>
+  </div>
+</div>
+
+@for(curso of cursos1; track curso.id){
+  <h4>{{ curso.nombre }}</h4>
+  <div class="text-end">
+    <div class="btn-group">
+      <button class="btn btn-danger">
+        Inscribir A Curso
+      </button>
+    </div>
+  </div>
+  <table class="table table-hover" >
+    @if (curso.cursoUsuarios.length > 0) {
+    <thead>
+      <tr>
+        <th>ID Usuario</th>
+        <th>Nombre Usuario</th>
+        <th>Correo Electrónico</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(cursoUsuario of curso.cursoUsuarios; track cursoUsuario.id){
+        <tr>
+          <td>{{ cursoUsuario.usuarioId }}</td>
+          <td>{{ getUsuarioNombre(cursoUsuario.usuarioId) }}</td>
+          <td>{{ getUsuarioCorreo(cursoUsuario.usuarioId) }}</td>
+        </tr>
+      }
+    </tbody>
+  } </table>
+  @if (curso.cursoUsuarios.length === 0) {
+    <p>No hay usuarios inscritos en este curso.</p>
+  }
+}
