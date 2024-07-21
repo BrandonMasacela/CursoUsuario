@@ -1,13 +1,18 @@
-<h2 mat-dialog-title>Buscar Usuario</h2>
+<h2 mat-dialog-title>Inscribir Al Curso</h2>
 <mat-dialog-content>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field>
+      <mat-label>ID de Curso</mat-label>
+      <input matInput formControlName="cursoId" required [attr.disabled]="true">
+    </mat-form-field>
+    <mat-form-field>
       <mat-label>ID de Usuario</mat-label>
-      <input matInput formControlName="userId" required>
+      <input matInput formControlName="usuarioId" required>
     </mat-form-field>
     <div mat-dialog-actions>
       <button mat-button type="button" (click)="close()">Cancelar</button>
-      <button mat-button type="submit" [disabled]="form.invalid">Buscar</button>
+      <button mat-button type="submit" [disabled]="form.invalid">Inscribir</button>
     </div>
   </form>
 </mat-dialog-content>
+

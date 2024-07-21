@@ -31,7 +31,7 @@ export class CursoService {
     return this.http.delete<void>(`http://localhost:8002/curso/EliminarCurso/${id}`);
   }
 
-  asignarUsuario(idCurso: number, usuario: Usuario): Observable<any> {
-    return this.http.put<any>(`http://localhost:8002/curso/AsignarUsuario/${idCurso}`, usuario);
+  asignarUsuario(idcurso: number, usuario: Usuario) {
+    return this.http.put(`http://localhost:8002/asignar-usuario/${idcurso}`, usuario);
   }
 }

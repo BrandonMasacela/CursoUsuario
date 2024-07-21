@@ -1,21 +1,17 @@
 <h2 class="mb-5">Detalle Curso</h2>
-<div class="text-end">
+<div class = "text-start">
   <div class="btn-group">
-    <button class="btn btn-primary" routerLink="/nuevoCurso">
-      Nuevo Curso
-    </button>
-    <button class="btn btn-warning">
-      Buscar
+    <button class = "btn btn-primary" routerLink = "/">
+      Home
     </button>
   </div>
 </div>
-
 @for(curso of cursos1; track curso.id){
   <h4>{{ curso.nombre }}</h4>
   <div class="text-end">
     <div class="btn-group">
-      <button class="btn btn-danger">
-        Inscribir A Curso
+      <button class="btn btn-primary" (click)="openAsignarUsuarioDialog(curso.id)">
+        Asignar Usuario
       </button>
     </div>
   </div>

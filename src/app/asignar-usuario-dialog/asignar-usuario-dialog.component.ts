@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -21,11 +21,13 @@ export class AsignarUsuarioDialogComponent {
   form: FormGroup;
 
   constructor(
+    private fb: FormBuilder,
     private dialogRef: MatDialogRef<AsignarUsuarioDialogComponent>,
-    private fb: FormBuilder
+    @Inject(MAT_DIALOG_DATA) public data: { cursoId: number; usuarioId: number }
   ) {
     this.form = this.fb.group({
-      userId: ['', Validators.required]
+      cursoId: [data.cursoId, Validators.required],
+      usuarioId: [data.usuarioId, Validators.required]
     });
   }
 

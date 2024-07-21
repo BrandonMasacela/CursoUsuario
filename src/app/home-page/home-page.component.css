@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  text-align: center;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.logo {
+  height: 50px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.btn {
+  margin: 0 10px;
+}
+
+footer {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #f8f9fa;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
