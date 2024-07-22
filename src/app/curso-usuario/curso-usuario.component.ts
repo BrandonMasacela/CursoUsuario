@@ -7,6 +7,11 @@ import { Usuario } from '../model/usuario.interface';
 import { catchError, forkJoin, of } from 'rxjs';
 import { Curso } from '../model/curso.interface';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { AsignarUsuarioDialogComponent } from '../asignar-usuario-dialog/asignar-usuario-dialog.component';
 
 
@@ -14,7 +19,9 @@ import { AsignarUsuarioDialogComponent } from '../asignar-usuario-dialog/asignar
   selector: 'app-curso-usuario',
   templateUrl: './curso-usuario.component.html',
   standalone: true,
-  imports: [RouterModule, RouterLink],
+  imports: [RouterModule, RouterLink, MatIconModule,
+    MatButtonModule, MatDividerModule,
+    MatTableModule, MatPaginatorModule],
   styleUrls: ['./curso-usuario.component.css']
 })
 export default class CursoUsuarioComponent implements OnInit {
@@ -25,6 +32,7 @@ export default class CursoUsuarioComponent implements OnInit {
   private usuarioService = inject(UsuarioService);
   usuariosMap: Map<number, Usuario> = new Map();
   private dialog = inject(MatDialog);
+  displayedColumns: string[] = ['usuarioId', 'nombre', 'correo'];
 
   ngOnInit(): void {
     this.loadAll();
@@ -67,7 +75,7 @@ export default class CursoUsuarioComponent implements OnInit {
 
   getUsuarioNombre(usuarioId: number): string {
     const usuario = this.usuariosMap.get(usuarioId);
-    console.log(`Buscando nombre para ID ${usuarioId}: ${usuario ? usuario.nombre : 'Nombre no disponible'}`); // Depuración
+    //console.log(`Buscando nombre para ID ${usuarioId}: ${usuario ? usuario.nombre : 'Nombre no disponible'}`); // Depuración
     return usuario?.nombre ?? 'Nombre no disponible';
   }
 
@@ -76,12 +84,13 @@ export default class CursoUsuarioComponent implements OnInit {
     return usuario?.email ?? 'Correo no disponible';
   }
 
-
-
-  openAsignarUsuarioDialog(cursoId: number) {
+  openAsignarUsuarioDialog(cursoId: number, nombreCurso: string) {
     const dialogRef = this.dialog.open(AsignarUsuarioDialogComponent, {
       width: '400px',
-      data: { cursoId: cursoId }
+      data: {
+        cursoId: cursoId,
+        nombreCurso: nombreCurso  // Pasa el nombre del curso aquí
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -109,5 +118,9 @@ export default class CursoUsuarioComponent implements OnInit {
         this.ngOnInit();
       }
     });
+  }
+
+  trackById(index: number, item: any): number {
+    return item.id;
   }
 }

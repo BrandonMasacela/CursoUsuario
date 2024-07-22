@@ -6,12 +6,21 @@ import { Usuario } from '../model/usuario.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Curso } from '../model/curso.interface';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-curso-form',
   templateUrl: './curso-form.component.html',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,
+    MatIconModule,
+    MatButtonModule, MatDividerModule,
+    MatTableModule, MatPaginatorModule
+  ],
   styleUrls: ['./curso-form.component.css']
 })
 export default class CursoFormComponent implements OnInit {

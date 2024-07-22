@@ -26,4 +26,7 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, CursoUsuario');
   });
+  it('Mi caso de prueba', () => {
+    expect(1).toBe(1);
+  });
 });

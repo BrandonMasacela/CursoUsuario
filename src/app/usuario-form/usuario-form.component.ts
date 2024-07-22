@@ -6,11 +6,20 @@ import { CustomValidators } from './custom-validators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from '../services/usuario.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-usuario-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule,
+    MatIconModule,
+    MatButtonModule, MatDividerModule,
+    MatTableModule, MatPaginatorModule
+  ],
   templateUrl: './usuario-form.component.html',
   styleUrl: './usuario-form.component.css'
 })

@@ -1,34 +1,53 @@
-<div class="container">
-  <header>
-    <img src="assets/logo_espe.jpg" alt="Logo" class="logo">
-    <h1 class="title">Sistema de Gestión de Cursos</h1>
-  </header>
+<div class="background h-screen w-full overflow-hidden lg:p-4">
+  <div class="content relative h-screen overflow-hidden lg:rounded-2xl">
+    <div class="flex items-start">
+      <div class="container">
+        <div class="mt-8 rounded-2xl" style="background: rgb(146 151 179 / 13%)">
+          <div class="container1 mx-auto">
+            <div class="py-8">
+              <div class="py-4">
+                <div class="max-w-full overflow-x-auto rounded-lg">
+                  <div class="mat-elevation-z8">
+                    <header>
+                      <img src="assets/logo_espe.png" alt="Logo" class="logo">
+                      <h1 class="title text-white">Sistema de Gestión de Cursos</h1>
+                    </header>
 
-  <body>
-    <h2 class="mb-5">Bienvenido al Sistema de Gestión de Cursos</h2>
-    <div class="btn-group">
-      <div class="btn-container">
-        <img src="assets/user-icon.png" alt="Usuarios" class="icon">
-        <button class="btn btn-primary" [routerLink]="['/mostrarUsuarios']">
-          Usuarios
-        </button>
-      </div>
-      <div class="btn-container">
-        <img src="assets/course-icon.png" alt="Cursos" class="icon">
-        <button class="btn btn-danger" [routerLink]="['/mostrarCursos']">
-          Cursos
-        </button>
-      </div>
-      <div class="btn-container">
-        <img src="assets/inscription-icon.png" alt="Inscribir A Curso" class="icon">
-        <button class="btn btn-warning" [routerLink]="['/mostrarInscripciones']">
-          Inscribir A Curso
-        </button>
+                    <main>
+                      <h2 class="mb-5">Bienvenido al Sistema de Gestión de Cursos</h2>
+                      <div class="btn-group">
+                        <div class="example-button-container" [routerLink]="['/mostrarUsuarios']">
+                          <button mat-fab extended class="casilla">
+                            <mat-icon>account_box</mat-icon>
+                            Usuarios
+                          </button>
+                        </div>
+                        <div class="example-button-container" [routerLink]="['/mostrarCursos']">
+                          <button mat-fab extended class="casilla">
+                            <mat-icon>school</mat-icon>
+                            Cursos
+                          </button>
+                        </div>
+                        <div class="example-button-container" [routerLink]="['/mostrarInscripciones']">
+                          <button mat-fab extended class="casilla">
+                            <mat-icon>group_add</mat-icon>
+                            Asignar
+                            Curso
+                          </button>
+                        </div>
+                      </div>
+                    </main>
+
+                    <footer class="text-white">
+                      &copy; 2024 Todos los derechos reservados.
+                    </footer>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
-
-  <footer>
-    &copy; 2024 Todos los derechos reservados.
-  </footer>
+  </div>
 </div>

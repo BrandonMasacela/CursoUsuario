@@ -1,19 +1,31 @@
 import { Curso } from './../model/curso.interface';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
 import { CursoService } from '../services/curso.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-curso-list',
-  templateUrl: './curso-list.component.html',
   standalone: true,
-  imports: [RouterModule, RouterLink],
+  imports: [
+    RouterModule, RouterLink, MatIconModule,
+    MatButtonModule, MatDividerModule,
+    MatTableModule, MatPaginatorModule
+  ],
+  templateUrl: './curso-list.component.html',
   styleUrls: ['./curso-list.component.css']
 })
 export default class CursoListComponent implements OnInit {
-
   private cursoService = inject(CursoService);
-  cursos1: Curso[] = [];
+
+  displayedColumns: string[] = ['id', 'nombre', 'operaciones'];
+  dataSource = new MatTableDataSource<Curso>();
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
     this.loadAll();
@@ -21,7 +33,8 @@ export default class CursoListComponent implements OnInit {
 
   loadAll() {
     this.cursoService.list().subscribe(cursos => {
-      this.cursos1 = cursos;
+      this.dataSource.data = cursos;
+      this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -31,5 +44,4 @@ export default class CursoListComponent implements OnInit {
       console.log('Curso eliminado');
     });
   }
-
 }
